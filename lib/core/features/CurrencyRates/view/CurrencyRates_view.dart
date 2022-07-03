@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_finance/core/features/CurrencyRates/model/CurrencyRates.dart';
-import 'package:my_finance/core/features/CurrencyRates/service/dataService.dart';
 
 import '../view_model/CurrencyRates_view_model.dart';
 
@@ -36,25 +34,21 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.blueGrey,
                         elevation: 2.0,
                         child: Card(
-                        color: Colors.green,
-                        elevation: 2.0,
-                        child: ListTile(
-                          title: Text("USD -> ${snapshot.data![i]["name"]}"),
-                          // subtitle: Text("BUY-> ${snapshot.data!.alis} || SELL-> ${snapshot.data!.satis}"),
-                          trailing: Text("${snapshot.data![i]["value"]}"),
-                        )));
+                            color: Colors.green,
+                            elevation: 2.0,
+                            child: ListTile(
+                              title:
+                                  Text("USD -> ${snapshot.data![i]["name"]}"),
+                              // subtitle: Text("BUY-> ${snapshot.data!.alis} || SELL-> ${snapshot.data!.satis}"),
+                              trailing: Text("${snapshot.data![i]["value"]}"),
+                            )));
                   });
-
-
-
-
-
-            }
-            else {
-              return Center(child: Text("Error !"),);
+            } else {
+              return Center(
+                child: Text("Error !"),
+              );
             }
           }),
     );
   }
-
 }
