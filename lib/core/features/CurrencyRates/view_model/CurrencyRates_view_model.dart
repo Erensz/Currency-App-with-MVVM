@@ -17,4 +17,9 @@ class ListCurrencyViewModel {
     });
     return currencyList;
   }
+  Future<String> getUpdateTime() async {
+    var data = await getCurrencies();
+    var cur = data as Currency;
+    return cur.timeLastUpdateUtc;
+  }
 }
