@@ -4,17 +4,25 @@ import 'package:my_finance/core/features/CurrencyRates/service/dataService.dart'
 class ListCurrencyViewModel{
 List<CurModel>? curs;
 
-  static Future<Currency> getCurrencies() async{
+   Future<Currency> getCurrencies() async{
     var data = await dataService.fetchCurrencys();
     return data;
 
   }
 
-  Future<Map<String, double>> name () async {
+Future<List<Map<String,dynamic>>> getCurList () async {
+    List<Map<String,dynamic>> currencyList = <Map<String,dynamic>>[];
     var data = await getCurrencies();
     var cur = data as Currency;
     var curMap = cur.conversionRates;
-    return curMap;
+    curMap.forEach((key, value) {
+      currencyList.add(  {
+      "name": key,
+        "value": value
+      });
+    });
+    return currencyList;
+
 
   }
 
